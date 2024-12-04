@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
+void *checkSafety(void *rank);
+
+pthread_mutex_t lock;
+int counter = 0;
+int **vals;
+
+
+int main() {
+	int lines = 1000;
+	printf("%d\n", lines);
+	vals = malloc(sizeof(int*) * lines);
+	int i = -1;
+	while (++i < lines) {
+		int* row = vals[i];
+		row = malloc(sizeof(int) * 10);
+		row[0] = scanf(
+				"%d %d %d %d %d %d %d %d %d",
+				&row[1], &row[2], &row[3], &row[4], &row[5], &row[6], &row[7], &row[8], &row[9]);
+		printf("%d\n", row[0]);
+	}
+	return 0;
+}
+
+void *checkSafety(void *rank) {
+	return NULL;
+}
